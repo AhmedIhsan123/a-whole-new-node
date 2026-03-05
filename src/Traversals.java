@@ -8,7 +8,7 @@ public class Traversals {
     Node<Integer> child2 = new Node<>(58);
     Node<Integer> child3 = new Node<>(33);
 
-    root.children = new ArrayList<>();
+    // root.children = new ArrayList<>();
     root.children.add(child1);
     root.children.add(child2);
     root.children.add(child3);
@@ -53,7 +53,7 @@ public class Traversals {
   public static void preorder(Node<?> node) {
     if (node == null) return;
     System.out.print(node.value + " ");
-    if (node.children == null) return;
+    // if (node.children == null) return;
     for (int i = 0; i < node.children.size(); i++) {
       preorder(node.children.get(i));
     }
