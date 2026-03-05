@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.stream.Gatherer.Integrator;
 
 public class Traversals {
   public static void main(String[] args) {
