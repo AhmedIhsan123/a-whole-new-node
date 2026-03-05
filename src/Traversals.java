@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Gatherer.Integrator;
 
 public class Traversals {
   public static void main(String[] args) {
@@ -40,7 +41,10 @@ public class Traversals {
     child3_1.children.add(child3_1_2);
 
     // Testing pre-order traversals
-    preorder(root);
+    // preorder(root);
+
+    // Testing max method
+    System.out.println(max(root));
   }
 
   /**
@@ -57,5 +61,25 @@ public class Traversals {
     for (int i = 0; i < node.children.size(); i++) {
       preorder(node.children.get(i));
     }
+  }
+
+  /**
+   * Find the maximum value in a tree of integers. This method assumes that the tree is not empty.
+   * Time complexity: O(n) where n is the number of nodes in the tree.
+   * Space complexity: O(h) where h is the height of the tree (due to recursion stack).
+   * 
+   * @param node the root node of the tree to traverse
+   * @return the maximum value in the tree
+   */
+  public static int max(Node<Integer> node) {
+    if (node == null) return Integer.MIN_VALUE;
+    int maxValue = node.value;
+    for (Node<Integer> e : node.children) {
+      if (e.value > maxValue) {
+        maxValue = e.value;
+      }
+      maxValue = Math.max(maxValue, max(e));
+    }
+    return maxValue;
   }
 }
