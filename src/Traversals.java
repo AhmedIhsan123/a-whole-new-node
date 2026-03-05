@@ -74,9 +74,6 @@ public class Traversals {
     if (node == null) return Integer.MIN_VALUE;
     int maxValue = node.value;
     for (Node<Integer> e : node.children) {
-      if (e.value > maxValue) {
-        maxValue = e.value;
-      }
       maxValue = Math.max(maxValue, max(e));
     }
     return maxValue;
