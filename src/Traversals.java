@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Traversals {
   public static void main(String[] args) {
@@ -43,7 +46,41 @@ public class Traversals {
     // preorder(root);
 
     // Testing max method
-    System.out.println(max(root));
+    // System.out.println(max(root));
+
+    Map<Integer, List<Integer>> tree = new HashMap<>();
+    tree.put(33, List.of(24, 61, 12));
+    tree.put(17, List.of(5, 99));
+    tree.put(58, List.of(73));
+    tree.put(24, List.of(83, 6));
+    tree.put(88, List.of(17, 58, 33));
+    tree.put(5, new ArrayList<>());
+    tree.put(99, new ArrayList<>());
+    tree.put(73, new ArrayList<>());
+    tree.put(83, new ArrayList<>());
+    tree.put(6, new ArrayList<>());
+    tree.put(61, new ArrayList<>());
+    tree.put(12, new ArrayList<>());
+
+    System.out.println(tree);
+    preorderMap(tree, 88);
+    // System.out.println(tree.get(17));
+  }
+
+  /**
+   * Pre-order traversal of a tree represented as an adjacency list. Visits the current node before its children.
+   * Time complexity: O(n) where n is the number of nodes in the tree.
+   * Space complexity: O(h) where h is the height of the tree (due to recursion stack).
+   * @param tree
+   * @param current
+   */
+  public static void preorderMap(Map<Integer, List<Integer>> tree, Integer current) {
+    if (!tree.containsKey(current)) return;
+    System.out.print(current + " ");
+    if (tree.get(current).isEmpty()) return;
+    for (Integer x : tree.get(current)) {
+      preorderMap(tree, x);
+    }
   }
 
   /**
